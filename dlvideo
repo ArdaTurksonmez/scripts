@@ -10,9 +10,9 @@ read answer; clear
 if [ $answer == 1 ]; then
   yt-dlp -f 140 --extract-audio --audio-format best -x "$url"
 elif [ $answer == 2 ]; then
-  yt-dlp -f bv -S ext:avi "$url"
+  yt-dlp -S ext:avi "$url"
 elif [ $answer == 3 ]; then
-  yt-dlp -f bv -S ext:avi "$url" && yt-dlp -f 140 --extract-audio --audio-format best -x "$url"
+  yt-dlp -S ext:avi "$url" && yt-dlp -f 140 --extract-audio --audio-format best -x "$url"
 elif [ $answer == 4 ]; then
   yt-dlp -S ext:mp4:m4a "$url" && yt-dlp --write-auto-sub --skip-download "$url"
 else
