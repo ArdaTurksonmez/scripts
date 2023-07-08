@@ -8,7 +8,7 @@ printf "1.) Extract Audio\n\tor\n2.) Extract Video\n\tor\n3.) Video & Audio\n\to
 read answer; clear
 
 if [ $answer == 1 ]; then
-  yt-dlp -f 140 --extract-audio --audio-format best -x "$url"
+  yt-dlp -f 140 --extract-audio --audio-quality 0 --audio-format best -x "$url"
 elif [ $answer == 2 ]; then
   yt-dlp -S ext:avi "$url"
 elif [ $answer == 3 ]; then
