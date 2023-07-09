@@ -1,0 +1,21 @@
+#!/bin/sh
+clear
+
+printf "Enter URL: "
+read url; clear
+
+printf "1.) Extract Audio\n\tor\n2.) Extract Video\n\tor\n3.) Video & Audio\n\tor\n4.) VA & Subtitles\nAnswer: "
+read answer; clear
+
+if [ $answer == 1 ]; then
+  yt-dlp -f 140 --extract-audio --audio-quality 0 --audio-format best -x "$url"
+elif [ $answer == 2 ]; then
+  yt-dlp -S ext:avi "$url"
+elif [ $answer == 3 ]; then
+  yt-dlp -S ext:avi "$url" && yt-dlp -f 140 --extract-audio --audio-format best -x "$url"
+elif [ $answer == 4 ]; then
+  yt-dlp -S ext:mp4:m4a "$url" && yt-dlp --write-auto-sub --skip-download "$url"
+else
+  exit 0
+fi
+exit 0

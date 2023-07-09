@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+import time
+while True:
+  try:
+    input("Press enter to continue and ctrl+c to exit the stopwatch.")
+    startTime=time.time()
+    print("Stopwatch has Started.")
+    while True:
+      print("Time Elapsed:", round(time.time()-startTime,0), 'secs', end='\n')
+      time.sleep(1)
+  except KeyboardInterrupt:
+    print("\nTimer has Stopped")
+    exit()
