@@ -8,13 +8,13 @@ printf "1.) Extract Audio\n\tor\n2.) Extract Video\n\tor\n3.) Video & Audio\n\to
 read answer; clear
 
 if [ $answer == 1 ]; then
-  yt-dlp -f 140 --extract-audio --audio-quality 0 --audio-format best -x -o '%(title)s.%(ext)s' "$url"
+  yt-dlp -f 140 --extract-audio --audio-quality 0 --audio-format best -x -o 'tmp.%(ext)s' "$url"
 elif [ $answer == 2 ]; then
-  yt-dlp -S ext:avi -o '%(title)s.%(ext)s' "$url"
+  yt-dlp -S ext:avi -o 'tmp.%(ext)s' "$url"
 elif [ $answer == 3 ]; then
-  yt-dlp -S ext:avi -o '%(title)s.%(ext)s' "$url" && yt-dlp -f 140 --extract-audio --audio-format best -x -o '%(title)s.%(ext)s' "$url"
+  yt-dlp -S ext:avi -o 'tmp.%(ext)s' "$url" && yt-dlp -f 140 --extract-audio --audio-format best -x -o 'tmp.%(ext)s' "$url"
 elif [ $answer == 4 ]; then
-  yt-dlp -S ext:mp4:m4a -o '%(title)s.%(ext)s' "$url" && yt-dlp --write-auto-sub --skip-download -o '%(title)s.%(ext)s' "$url"
+  yt-dlp -S ext:mp4:m4a -o 'tmp.%(ext)s' "$url" && yt-dlp --write-auto-sub --skip-download -o 'tmp.%(ext)s' "$url"
 else
   exit 0
 fi
