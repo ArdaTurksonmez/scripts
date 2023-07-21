@@ -7,6 +7,8 @@ read url; clear
 printf "1.) Extract Audio\n\tor\n2.) Extract Video\n\tor\n3.) Video & Audio\n\tor\n4.) VA & Subtitles\nAnswer: "
 read answer; clear
 
+cd ~/Downloads/tmp
+
 if [ $answer == 1 ]; then
   yt-dlp -f 140 --extract-audio --audio-quality 0 --audio-format best -x "$url"
 elif [ $answer == 2 ]; then
@@ -18,4 +20,11 @@ elif [ $answer == 4 ]; then
 else
   exit 0
 fi
+
+for i in *; do
+  mv "$i" "$(echo "$i" | sed "s/.\[.*]//")"
+done
+
+mv * ~/
+
 exit 0
